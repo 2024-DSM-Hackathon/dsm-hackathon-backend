@@ -1,6 +1,7 @@
 package org.dsmhackathonbackend.domain.answer.domain
 
 import jakarta.persistence.*
+import org.apache.logging.log4j.util.StringMap
 import org.dsmhackathonbackend.domain.question.domain.Question
 import org.dsmhackathonbackend.domain.user.domain.User
 
@@ -13,6 +14,12 @@ class Answer(
     val id: Long = 0,
 
     var answer: String,
+
+    val sector: String,
+
+    val annual: Int,
+
+    val status: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
