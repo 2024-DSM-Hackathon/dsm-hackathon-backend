@@ -18,7 +18,7 @@ class Company(
 
     var info: String,
 
-    var rating: Int,
+    var rating: Float,
 
     val registrationNumber: Int,
 

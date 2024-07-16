@@ -22,6 +22,7 @@ class Review(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
-    val question: Question
-) {
+    val question: Question,
+
+    ) {
 }
