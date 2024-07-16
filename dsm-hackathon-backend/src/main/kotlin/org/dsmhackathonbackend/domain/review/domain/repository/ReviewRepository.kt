@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository
 
 interface ReviewRepository : CrudRepository<Review, Long> {
     fun findByCompanyAndQuestion(company: Company, question: Question): Review?
+    fun findAllByCompanyId(companyId: Long): List<Review>
 }
