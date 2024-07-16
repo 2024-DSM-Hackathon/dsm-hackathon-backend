@@ -3,6 +3,7 @@ package org.dsmhackathonbackend.domain.review.domain
 import jakarta.persistence.*
 import org.dsmhackathonbackend.domain.company.domain.Company
 import org.dsmhackathonbackend.domain.question.domain.Question
+import kotlin.math.round
 
 @Table(name = "tbl_review")
 @Entity
@@ -25,4 +26,10 @@ class Review(
     val question: Question,
 
     ) {
+
+    fun update(rating: Int) {
+        val totalRating = (this.ratingAverage * this.count) + rating
+        this.count += 1
+        this.ratingAverage = (round((totalRating / this.count) * 10) / 10)
+    }
 }
