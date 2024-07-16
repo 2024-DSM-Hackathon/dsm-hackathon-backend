@@ -1,6 +1,7 @@
 package org.dsmhackathonbackend.domain.company.domain
 
 import jakarta.persistence.*
+import kotlin.math.round
 
 @Table(name = "tbl_company")
 @Entity
@@ -26,4 +27,8 @@ class Company(
 
     val logo: String
 ) {
+
+    fun update(totalRating: Float) {
+        this.rating = (round((totalRating / 4) * 10) / 10)
+    }
 }

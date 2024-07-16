@@ -33,6 +33,8 @@ class CreateAnswerService(
 
         val userEntity = userFacade.getCurrentUser()
 
+        var ratingAverage = 0f
+
         val answerEntityList = request.answerList.map {
             val questionEntity = questionRepository.findByIdOrNull(it.questionId)
                 ?: throw QuestionNotFoundException
@@ -41,6 +43,8 @@ class CreateAnswerService(
                 ?: throw ReviewNotFoundException
 
             reviewEntity.update(it.rating)
+
+            ratingAverage += reviewEntity.ratingAverage
 
             Answer(
                 answer = it.answer,
@@ -54,6 +58,8 @@ class CreateAnswerService(
                 company = companyEntity
             )
         }
+
+        companyEntity.update(ratingAverage)
 
         answerRepository.saveAll(answerEntityList)
     }
