@@ -16,6 +16,7 @@ class QueryCompanyRatingAverageListService(
         return QueryCompanyRatingAverageResponse(
             companyLists = companies.map {
                 CompanyResponse(
+                    companyId = it.id,
                     company = it.name,
                     rating = it.rating,
                     info = it.info,

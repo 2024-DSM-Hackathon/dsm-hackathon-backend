@@ -5,6 +5,7 @@ data class QueryCompanyRatingAverageResponse(
 )
 
 data class CompanyResponse (
+    val companyId: Long,
     val company: String,
     val rating: Float,
     val info: String,
