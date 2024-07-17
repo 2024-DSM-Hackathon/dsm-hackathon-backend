@@ -8,6 +8,7 @@ import org.dsmhackathonbackend.domain.company.domain.repository.CompanyRepositor
 import org.dsmhackathonbackend.domain.company.exception.CompanyNotFoundException
 import org.dsmhackathonbackend.domain.question.domain.repository.QuestionRepository
 import org.dsmhackathonbackend.domain.question.exception.QuestionNotFoundException
+import org.dsmhackathonbackend.domain.review.domain.Review
 import org.dsmhackathonbackend.domain.review.domain.repository.ReviewRepository
 import org.dsmhackathonbackend.domain.review.exception.ReviewNotFoundException
 import org.dsmhackathonbackend.domain.user.facade.UserFacade
@@ -40,7 +41,14 @@ class CreateAnswerService(
                 ?: throw QuestionNotFoundException
 
             val reviewEntity = reviewRepository.findByCompanyAndQuestion(companyEntity, questionEntity)
-                ?: throw ReviewNotFoundException
+                ?: reviewRepository.save(
+                    Review(
+                        count = 0,
+                        ratingAverage = 0f,
+                        company = companyEntity,
+                        question = questionEntity
+                    )
+                )
 
             reviewEntity.update(it.rating)
 
