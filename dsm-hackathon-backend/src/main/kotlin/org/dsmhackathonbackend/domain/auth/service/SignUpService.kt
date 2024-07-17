@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
-class SingUpService(
+class SignUpService(
         private val authDetailsService: AuthDetailsService,
         private val userRepository: UserRepository,
         private val passwordEncoder: PasswordEncoder,
@@ -34,29 +34,5 @@ class SingUpService(
                 name = name
         )
         userRepository.save(user)
-    }
-
-    fun authenticate(username: String, password: String): String {
-        val authentication = authenticationManager.authenticate(
-                UsernamePasswordAuthenticationToken(username, password)
-        )
-        SecurityContextHolder.getContext().authentication = authentication
-        return generateToken(username)
-    }
-
-    fun authorize(token: String): Boolean {
-        val username = getUsernameFromToken(token)
-        val userDetails = authDetailsService.loadUserByUsername(username) as AuthDetails
-        return userDetails != null
-    }
-
-    private fun generateToken(username: String): String {
-        // 토큰 생성 로직 추가
-        return username
-    }
-
-    private fun getUsernameFromToken(token: String): String {
-        // 토큰에서 사용자명 추출 로직 추가
-        return token
     }
 }
