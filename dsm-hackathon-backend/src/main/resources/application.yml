@@ -18,3 +18,8 @@ spring:
 jwt:
   secret_key: ${SECRET_KEY}
   access_exp: ${ACCESS_EXP}
+
+ngrok:
+  enabled: true
+  auth-token: 2jLubrP3vr0qYqvMA3Xzu4P3tYX_3DjU981WNV21nC5NT7DF7
+  command: http 8080 --domain=gibbon-vocal-swine.ngrok-free.app

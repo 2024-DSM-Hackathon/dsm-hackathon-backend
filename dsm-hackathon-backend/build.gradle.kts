@@ -48,6 +48,7 @@ dependencies {
     implementation("javax.xml.bind:jaxb-api:2.3.1")
     implementation("org.glassfish.jaxb:jaxb-runtime:2.3.1")
 
+    implementation ("io.github.kilmajster:ngrok-spring-boot-starter:0.9.2")
 }
 
 kotlin {
