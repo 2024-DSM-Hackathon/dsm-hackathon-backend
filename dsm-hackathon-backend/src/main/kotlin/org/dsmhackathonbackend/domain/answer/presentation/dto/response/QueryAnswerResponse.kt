@@ -8,6 +8,7 @@ data class QueryAnswerListResponse(
 )
 
 data class QueryAnswerResponse (
+    val question: String,
     val sector: String,
     val annual: Int,
     val status: String,

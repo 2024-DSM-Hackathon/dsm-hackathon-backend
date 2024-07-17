@@ -22,13 +22,15 @@ class QueryMyCompanyDetailsService(
         val reviewLists = reviewRepository.findAllByCompanyId(company.id)
 
         return QueryCompanyDetailsResponse(
+            companyId = company.id,
             company = company.name,
             info = company.info,
             industrySector = company.industrySector,
             logo = company.logo,
             companyRating = company.rating,
+            registrationNumber = company.registrationNumber,
             ratingList = reviewLists.map {
-                val questionEntity = questionRepository.findByIdOrNull(it.id)
+                val questionEntity = questionRepository.findByIdOrNull(it.question.id)
                     ?: throw QuestionNotFoundException
 
                 RatingResponse(
