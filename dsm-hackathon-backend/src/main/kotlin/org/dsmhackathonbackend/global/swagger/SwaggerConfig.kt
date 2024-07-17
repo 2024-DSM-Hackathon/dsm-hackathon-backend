@@ -18,7 +18,7 @@ class SwaggerConfig {
     @Bean
     fun openAPI(): OpenAPI {
         val server: Server = Server()
-        server.url = "https://gibbon-vocal-swine.ngrok-free.app"
+        server.url = "https://obliging-unified-toucan.ngrok-free.app"
         return OpenAPI()
             .servers(listOf
                 (server))

@@ -15,6 +15,7 @@ enum class ErrorCode(
     REVIEW_NOT_FOUND(404, "Review Not Found"),
 
     USER_ALREADY_EXIST(409, "User Already Exist"),
+    COMPANY_ALREADY_EXIST(409, "Company Already Exist"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error")
 }

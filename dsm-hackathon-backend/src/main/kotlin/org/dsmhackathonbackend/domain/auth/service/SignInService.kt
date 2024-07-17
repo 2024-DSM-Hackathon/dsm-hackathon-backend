@@ -24,6 +24,6 @@ class SignInService(
         if (!passwordEncoder.matches(password, user.password))
             throw PasswordMisMatchException
 
-        return jwtTokenProvider.provideToken(user.accountId)
+        return jwtTokenProvider.provideToken(user.accountId, "user")
     }
 }

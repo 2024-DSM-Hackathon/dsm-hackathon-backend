@@ -21,7 +21,7 @@ class Company(
 
     var rating: Float,
 
-    val registrationNumber: Int,
+    val registrationNumber: String,
 
     val industrySector: String,
 
